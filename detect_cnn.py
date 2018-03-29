@@ -1,29 +1,4 @@
-#!/usr/bin/python
-# The contents of this file are in the public domain. See LICENSE_FOR_EXAMPLE_PROGRAMS.txt
-#
-#   This example shows how to run a CNN based face detector using dlib.  The
-#   example loads a pretrained model and uses it to find faces in images.  The
-#   CNN model is much more accurate than the HOG based model shown in the
-#   face_detector.py example, but takes much more computational power to
-#   run, and is meant to be executed on a GPU to attain reasonable speed.
-#
-#   You can download the pre-trained model from:
 #       http://dlib.net/files/mmod_human_face_detector.dat.bz2
-#
-#   The examples/faces folder contains some jpg images of people.  You can run
-#   this program on them and see the detections by executing the
-#   following command:
-#       ./cnn_face_detector.py mmod_human_face_detector.dat ../examples/faces/*.jpg
-#
-#
-# COMPILING/INSTALLING THE DLIB PYTHON INTERFACE
-#   You can install dlib using the command:
-#       pip install dlib
-#
-#   Alternatively, if you want to compile dlib yourself then go into the dlib
-#   root folder and run:
-#       python setup.py install
-#   or
 #       python setup.py install --yes USE_AVX_INSTRUCTIONS --yes DLIB_USE_CUDA
 #   if you have a CPU that supports AVX instructions, you have an Nvidia GPU
 #   and you have CUDA installed since this makes things run *much* faster.
@@ -54,8 +29,8 @@ import caffe
 caffe.set_mode_gpu()
 
 
-detector = dlib.get_frontal_face_detector() #cpu
-#detector = dlib.cnn_face_detection_model_v1('mmod_human_face_detector.dat') #gpu & cnn
+#detector = dlib.get_frontal_face_detector() #cpu
+detector = dlib.cnn_face_detection_model_v1('mmod_human_face_detector.dat') #gpu & cnn
 faces_folder_path = './test/'
 valid_folder_path = './valid/'
 trims_folder_path = './trim/'
